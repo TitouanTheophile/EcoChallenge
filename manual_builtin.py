@@ -4,284 +4,291 @@ def abs(x):
     else:
         return -x
 
-def aiter(*args):
-    # return aiter(*args)
+def aiter(async_iterable):
+    # return aiter()
     pass
 
-def all(*args):
-    # return all(*args)
+def all(iterable):
+    for element in iterable:
+        if not element:
+            return False
+    return True
+
+def anext(async_iterator):
+    # return anext()
     pass
 
-def anext(*args):
-    # return anext(*args)
+def any(iterable):
+    for element in iterable:
+        if element:
+            return True
+    return False
+
+def ascii(object):
+    # return ascii()
     pass
 
-def any(*args):
-    # return any(*args)
+def bin(x):
+    # return bin()
     pass
 
-def ascii(*args):
-    # return ascii(*args)
-    pass
-
-def bin(*args):
-    # return bin(*args)
-    pass
-
-def bool(x):
+def bool(x=False):
     if x:
         return True
     else:
         return False
     
-def breakpoint(*args):
-    # return breakpoint(*args)
+def breakpoint(*args, **kws):
+    # return breakpoint()
     pass
 
-def bytearray(*args):
-    # return bytearray(*args)
+def bytearray(source=b''):
+    # return bytearray()
     pass
 
-def bytes(*args):
-    # return bytes(*args)
+def bytes(source=b''):
+    # return bytes()
     pass
 
-def callable(*args):
-    # return callable(*args)
+def callable(object):
+    # return callable()
     pass
 
-def chr(*args):
-    # return chr(*args)
+def chr(i):
+    # return chr()
     pass
 
-def classmethod(*args):
-    # return classmethod(*args)
+# def classmethod():
+    # return classmethod()
+    # pass
+
+def compile(source, filename, mode, flags=0, dont_inherit=False, optimize=-1):
+    # return compile()
     pass
 
-def compile(*args):
-    # return compile(*args)
+def complex(real=0, imag=0):
+    # return complex()
     pass
 
-def complex(*args):
-    # return complex(*args)
+def delattr(object, name):
+    # return delattr()
     pass
 
-def delattr(*args):
-    # return delattr(*args)
+def dict(**kwarg)):
+    # return dict()
     pass
 
-def dict(*args):
-    # return dict(*args)
+def dir(object):
+    # return dir()
     pass
 
-def dir(*args):
-    # return dir(*args)
+def divmod(a, b):
+    # return divmod()
     pass
 
-def divmod(*args):
-    # return divmod(*args)
+def enumerate(iterable, start=0):
+    # return enumerate()
     pass
 
-def enumerate(*args):
-    # return enumerate(*args)
+def eval(expression, globals=None, locals=None):
+    # return eval()
     pass
 
-def eval(*args):
-    # return eval(*args)
+def exec(object, globals=None, locals=None, /, *, closure=None):
+    # return exec()
     pass
 
-def exec(*args):
-    # return exec(*args)
+def filter(function, iterable):
+    # return filter()
     pass
 
-def filter(*args):
-    # return filter(*args)
+def float(x=0.0):
+    # return float()
     pass
 
-def float(*args):
-    # return float(*args)
+def format(value, format_spec=''):
+    # return format()
     pass
 
-def format(*args):
-    # return format(*args)
+def frozenset(iterable=set()):
+    # return frozenset()
     pass
 
-def frozenset(*args):
-    # return frozenset(*args)
+def getattr(object, name):
+    # return getattr()
     pass
 
-def getattr(*args):
-    # return getattr(*args)
+def globals():
+    # return globals()
     pass
 
-def globals(*args):
-    # return globals(*args)
+def hasattr(object, name):
+    # return hasattr()
     pass
 
-def hasattr(*args):
-    # return hasattr(*args)
+def hash(object):
+    # return hash()
     pass
 
-def hash(*args):
-    # return hash(*args)
+def help():
+    # return help()
     pass
 
-def help(*args):
-    # return help(*args)
+def hex(x):
+    # return hex()
     pass
 
-def hex(*args):
-    # return hex(*args)
+def id(object):
+    # return id()
     pass
 
-def id(*args):
-    # return id(*args)
+def input():
+    # return input()
     pass
 
-def input(*args):
-    # return input(*args)
+def int(x=0):
+    # return int()
     pass
 
-def int(*args):
-    # return int(*args)
+def isinstance(object, classinfo):
+    # return isinstance()
     pass
 
-def isinstance(*args):
-    # return isinstance(*args)
+def issubclass(class, classinfo):
+    # return issubclass()
     pass
 
-def issubclass(*args):
-    # return issubclass(*args)
+def iter(object):
+    # return iter()
     pass
 
-def iter(*args):
-    # return iter(*args)
+def len(s):
+    lenght = 0
+    for _ in s:
+        lenght = lenght + 1
+
+    return lenght
+
+def list():
+    # return list()
     pass
 
-def len(*args):
-    # return len(*args)
+def locals():
+    # return locals()
     pass
 
-def list(*args):
-    # return list(*args)
+def map(function, iterable, *iterables):
+    # return map()
     pass
 
-def locals(*args):
-    # return locals(*args)
+def max(iterable, *, key=None):
+    # return max()
     pass
 
-def map(*args):
-    # return map(*args)
+def memoryview(object):
+    # return memoryview()
     pass
 
-def max(*args):
-    # return max(*args)
+def min(iterable, *, key=None):
+    # return min()
     pass
 
-def memoryview(*args):
-    # return memoryview(*args)
+def next(iterator):
+    # return next()
     pass
 
-def min(*args):
-    # return min(*args)
+def object():
+    # return object()
     pass
 
-def next(*args):
-    # return next(*args)
+def oct(x):
+    # return oct()
     pass
 
-def object(*args):
-    # return object(*args)
+def open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None):
+    # return open()
     pass
 
-def oct(*args):
-    # return oct(*args)
+def ord(c):
+    # return ord()
     pass
 
-def open(*args):
-    # return open(*args)
+def pow(base, exp, mod=None):
+    # return pow()
     pass
 
-def ord(*args):
-    # return ord(*args)
+def print(*objects, sep=' ', end='\n', file=None, flush=False):
+    # return print()
     pass
 
-def pow(*args):
-    # return pow(*args)
+def property(fget=None, fset=None, fdel=None, doc=None):
+    # return property()
     pass
 
-def print(*args):
-    # return print(*args)
+def range(stop):
+    # return range()
     pass
 
-def property(*args):
-    # return property(*args)
+def repr(object):
+    # return repr()
     pass
 
-def range(*args):
-    # return range(*args)
+def reversed(seq):
+    # return reversed()
     pass
 
-def repr(*args):
-    # return repr(*args)
+def round(number, ndigits=None):
+    # return round()
     pass
 
-def reversed(*args):
-    # return reversed(*args)
+def set():
+    # return set()
     pass
 
-def round(*args):
-    # return round(*args)
+def setattr(object, name, value):
+    # return setattr()
     pass
 
-def set(*args):
-    # return set(*args)
+def slice(stop):
+    # return slice()
     pass
 
-def setattr(*args):
-    # return setattr(*args)
+def sorted(iterable, /, *, key=None, reverse=False):
+    # return sorted()
     pass
 
-def slice(*args):
-    # return slice(*args)
+# def staticmethod():
+#     # return staticmethod()
+#     pass
+
+def str(object=''):
+    # return str()
     pass
 
-def sorted(*args):
-    # return sorted(*args)
+def sum(iterable, /, start=0):
+    # return sum()
     pass
 
-def staticmethod(*args):
-    # return staticmethod(*args)
+def super():
+    # return super()
     pass
 
-def str(*args):
-    # return str(*args)
+def tuple():
+    # return tuple()
     pass
 
-def sum(*args):
-    # return sum(*args)
+def type():
+    # return type()
     pass
 
-def super(*args):
-    # return super(*args)
+def vars():
+    # return vars()
     pass
 
-def tuple(*args):
-    # return tuple(*args)
+def zip(*iterables, strict=False):
+    # return zip()
     pass
 
-def type(*args):
-    # return type(*args)
-    pass
-
-def vars(*args):
-    # return vars(*args)
-    pass
-
-def zip(*args):
-    # return zip(*args)
-    pass
-
-# def import(*args):
-    # return import(*args)  pass
+# def import():
+    # return import()  pass
     # pass
