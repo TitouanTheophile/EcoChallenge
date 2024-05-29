@@ -3,227 +3,12 @@ import time
 import memory_profiler
 import click
 import psutil
+import json
 
 import builtin
 import manual_builtin
 
-
-builtin_args = {
-    "abs": {
-
-    },
-    "aiter": {
-
-    },
-    "all": {
-
-    },
-    "anext": {
-
-    },
-    "any": {
-
-    },
-    "ascii": {
-
-    },
-    "bin": {
-
-    },
-    "bool": {
-
-    },
-    "breakpoint": {
-
-    },
-    "bytearray": {
-
-    },
-    "bytes": {
-
-    },
-    "callable": {
-
-    },
-    "chr": {
-
-    },
-    "classmethod": {
-
-    },
-    "compile": {
-
-    },
-    "complex": {
-
-    },
-    "delattr": {
-
-    },
-    "dict": {
-
-    },
-    "dir": {
-
-    },
-    "divmod": {
-
-    },
-    "enumerate": {
-
-    },
-    "eval": {
-
-    },
-    "exec": {
-
-    },
-    "filter": {
-
-    },
-    "float": {
-
-    },
-    "format": {
-
-    },
-    "frozenset": {
-
-    },
-    "getattr": {
-
-    },
-    "globals": {
-
-    },
-    "hasattr": {
-
-    },
-    "hash": {
-
-    },
-    "help": {
-
-    },
-    "hex": {
-
-    },
-    "id": {
-
-    },
-    "input": {
-
-    },
-    "int": {
-
-    },
-    "isinstance": {
-
-    },
-    "issubclass": {
-
-    },
-    "iter": {
-
-    },
-    "len": {
-
-    },
-    "list": {
-
-    },
-    "locals": {
-
-    },
-    "map": {
-
-    },
-    "max": {
-
-    },
-    "memoryview": {
-
-    },
-    "min": {
-
-    },
-    "next": {
-
-    },
-    "object": {
-
-    },
-    "oct": {
-
-    },
-    "open": {
-
-    },
-    "ord": {
-
-    },
-    "pow": {
-
-    },
-    "print": {
-
-    },
-    "property": {
-
-    },
-    "range": {
-
-    },
-    "repr": {
-
-    },
-    "reversed": {
-
-    },
-    "round": {
-
-    },
-    "set": {
-
-    },
-    "setattr": {
-
-    },
-    "slice": {
-
-    },
-    "sorted": {
-
-    },
-    "staticmethod": {
-
-    },
-    "str": {
-
-    },
-    "sum": {
-
-    },
-    "super": {
-
-    },
-    "tuple": {
-
-    },
-    "type": {
-
-    },
-    "vars": {
-
-    },
-    "zip": {
-
-    },
-    "__import__": {
-
-    }
-}
-
+from config import builtin_args
 
 def measure_performance(func, **args):
     start_time = time.time()
@@ -244,29 +29,32 @@ def main(builtin_name: str, n: int):
 
     original_builtin = getattr(builtin, builtin_name)
     test_builtin = getattr(manual_builtin, builtin_name)
-    results_original = {
-        'RAM': [],
-        'CPU': [],
-        'time': [],
-    }
-    results_test = {
-        'RAM': [],
-        'CPU': [],
-        'time': [],
+    results = {
+        'Original': {
+            'RAM': [],
+            'CPU': [],
+            'time': [],
+        },
+        'Test': {
+            'RAM': [],
+            'CPU': [],
+            'time': [],
+        }
     }
 
     for i in range(n):
         time_original, ram_original, cpu_original = measure_performance(original_builtin, **builtin_args[builtin_name])
         time_test, ram_test, cpu_test = measure_performance(test_builtin, **builtin_args[builtin_name])
 
-        results_original['RAM'].append(ram_original)
-        results_test['RAM'].append(ram_test)
-        results_original['CPU'].append(cpu_original)
-        results_test['CPU'].append(cpu_test)
-        results_original['time'].append(time_original)
-        results_test['time'].append(time_test)
+        results['Original']['RAM'].append(ram_original)
+        results['Test']['RAM'].append(ram_test)
+        results['Original']['CPU'].append(cpu_original)
+        results['Test']['CPU'].append(cpu_test)
+        results['Original']['time'].append(time_original)
+        results['Test']['time'].append(time_test)
 
-
+    with open('report.json', 'w') as file:
+        json.dump(results, file)
 
 
 if __name__ == '__main__':
