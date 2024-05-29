@@ -74,7 +74,7 @@ def delattr(object, name):
     # return delattr()
     pass
 
-def dict(**kwarg)):
+def dict(**kwarg):
     # return dict()
     pass
 
@@ -83,12 +83,15 @@ def dir(object):
     pass
 
 def divmod(a, b):
-    # return divmod()
-    pass
+    d = int(a / b)
+    m = a % b
+    return (d, m)
 
 def enumerate(iterable, start=0):
-    # return enumerate()
-    pass
+    n = start
+    for elem in iterable:
+        yield n, elem
+        n += 1
 
 def eval(expression, globals=None, locals=None):
     # return eval()
@@ -135,8 +138,15 @@ def help():
     pass
 
 def hex(x):
-    # return hex()
-    pass
+    if not isinstance(x, int):
+        raise TypeError("an integer is required")
+    hex_digits = "0123456789abcdef"
+    result = ""
+    while x > 0:
+        x = x / 16
+        remainder = x % 16
+        result = hex_digits[remainder] + result
+    return "0x" + result if result else "0x0"
 
 def id(object):
     # return id()
@@ -154,7 +164,7 @@ def isinstance(object, classinfo):
     # return isinstance()
     pass
 
-def issubclass(class, classinfo):
+# def issubclass(class, classinfo):
     # return issubclass()
     pass
 
