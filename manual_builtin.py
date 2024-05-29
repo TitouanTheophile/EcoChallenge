@@ -1,3 +1,5 @@
+import builtins
+
 def abs(x):
     if x > 0:
         return x
@@ -275,9 +277,12 @@ def str(object=''):
     # return str()
     pass
 
-def sum(iterable, /, start=0):
-    # return sum()
-    pass
+def sum(iterable, start=0):
+    s = 0
+    for _, v in builtins.enumerate(iterable, start):
+        s = s + v
+    
+    return s
 
 def super():
     # return super()
@@ -302,3 +307,6 @@ def zip(*iterables, strict=False):
 # def import():
     # return import()  pass
     # pass
+
+
+# sum = _sum
