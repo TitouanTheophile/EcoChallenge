@@ -2,6 +2,7 @@ import importlib
 import time
 import memory_profiler
 import click
+import psutil
 
 import builtin
 import manual_builtin
@@ -227,26 +228,45 @@ builtin_args = {
 def measure_performance(func, **args):
     start_time = time.time()
     start_mem = memory_profiler.memory_usage()[0]
-
-    result = func(**args)
+    start_cpu = psutil.cpu_percent(interval=None)
 
     end_time = time.time()
     end_mem = memory_profiler.memory_usage()[0]
+    end_cpu = psutil.cpu_percent(interval=None)
 
-    return result, end_time - start_time, end_mem - start_mem
+    return end_time - start_time, end_mem - start_mem, end_cpu - start_cpu
 
 
 @click.command()
-@click.option('--builtin_name', type=click.Choice(['fibonacci', 'hanoi']), default='algorithm1')
-def main(builtin_name: str):
+@click.option('--builtin_name', default='abs')
+@click.option('--n', default=10)
+def main(builtin_name: str, n: int):
+
     original_builtin = getattr(builtin, builtin_name)
-    manual_builtin = getattr(manual_builtin, builtin_name)
+    test_builtin = getattr(manual_builtin, builtin_name)
+    results_original = {
+        'RAM': [],
+        'CPU': [],
+        'time': [],
+    }
+    results_test = {
+        'RAM': [],
+        'CPU': [],
+        'time': [],
+    }
 
-    _, time_good, mem_good = measure_performance(original_builtin, **builtin_args[builtin_name])
-    _, time_wrong, mem_wrong = measure_performance(manual_builtin, **builtin_args[builtin_name])
+    for i in range(n):
+        time_original, ram_original, cpu_original = measure_performance(original_builtin, **builtin_args[builtin_name])
+        time_test, ram_test, cpu_test = measure_performance(test_builtin, **builtin_args[builtin_name])
 
-    print(f"Good Practice - Time: {time_good} seconds, Memory: {mem_good} MiB")
-    print(f"Wrong Practice - Time: {time_wrong} seconds, Memory: {mem_wrong} MiB")
+        results_original['RAM'].append(ram_original)
+        results_test['RAM'].append(ram_test)
+        results_original['CPU'].append(cpu_original)
+        results_test['CPU'].append(cpu_test)
+        results_original['time'].append(time_original)
+        results_test['time'].append(time_test)
+
+
 
 
 if __name__ == '__main__':
