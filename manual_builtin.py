@@ -9,16 +9,20 @@ def aiter(async_iterable):
     pass
 
 def all(iterable):
-    # return all()
-    pass
+    for element in iterable:
+        if not element:
+            return False
+    return True
 
 def anext(async_iterator):
     # return anext()
     pass
 
 def any(iterable):
-    # return any()
-    pass
+    for element in iterable:
+        if element:
+            return True
+    return False
 
 def ascii(object):
     # return ascii()
