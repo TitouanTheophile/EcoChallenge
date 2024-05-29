@@ -159,8 +159,11 @@ def iter(object):
     pass
 
 def len(s):
-    # return len()
-    pass
+    lenght = 0
+    for _ in s:
+        lenght = lenght + 1
+
+    return lenght
 
 def list():
     # return list()
