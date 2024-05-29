@@ -1,27 +1,36 @@
+import time
+
+
 # Fibonacci function using iteration
 import click
 
 
 def fibonacci_iterative(n):
-    if n <= 0:
-        return 0
-    elif n == 1:
-        return 1
+    start_time = time.time()
+    if n <= 2:
+        return 1 if n else 0
     else:
-        fib = [0, 1]
+        a = 0
+        b = 1
         for i in range(2, n + 1):
-            fib.append(fib[i - 1] + fib[i - 2])
-        return fib[n]
+            a, b = b, a + b
+    end_time = time.time()
+    print(f"Time taken by iterative function: {end_time - start_time} seconds")
+    return b
+
 
 
 # Fibonacci function using recursion
 def fibonacci_recursive(n):
-    if n <= 0:
-        return 0
-    elif n == 1:
-        return 1
+    start_time = time.time()
+    if n <= 2:
+        return 1 if n else 0
     else:
-        return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
+        result = fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
+
+    end_time = time.time()
+    print(f"Time taken by recursive function: {end_time - start_time} seconds")
+    return result
 
 
 @click.command()
@@ -30,7 +39,7 @@ def fibonacci_recursive(n):
 def main(mode: str, n: int):
     fibonacci_functions = {
         'rec': fibonacci_recursive,
-        'ite': fibonacci_iterative
+        'ite': fibontacci_iterative
     }
 
     result = fibonacci_functions.get(mode)(n)
@@ -40,3 +49,5 @@ def main(mode: str, n: int):
 
 if __name__ == "__main__":
     main()
+
+
