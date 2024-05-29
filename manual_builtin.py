@@ -201,9 +201,17 @@ def memoryview(object):
     # return memoryview()
     pass
 
-def min(iterable, *, key=None):
-    # return min()
-    pass
+def min(iterable):
+    lenght = builtins.len(iterable)
+    if lenght == 0:
+        raise  ValueError("Iterable is empty.")
+
+    m = iterable[0]
+
+    for i in builtins.range(1, lenght):
+        if iterable[i] < m:
+            m = iterable[i]
+    return m
 
 def next(iterator):
     # return next()
@@ -307,6 +315,3 @@ def zip(*iterables, strict=False):
 # def import():
     # return import()  pass
     # pass
-
-
-# sum = _sum
