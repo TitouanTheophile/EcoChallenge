@@ -1,4 +1,12 @@
 conf = {
+    "len": [
+        # Takes size of the list that will be generated with range
+        (1,),
+        (20,),
+        (100,),
+        (500,),
+        (5000,),
+    ],
     "abs": [
         (1,),
         (-1,),
