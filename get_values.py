@@ -3,7 +3,7 @@ import vjoule_handler
 import pandas as pd
 
 builtin_list = [
-    'sum'
+    'sum',
     'hex',
     'abs',
     'len',
