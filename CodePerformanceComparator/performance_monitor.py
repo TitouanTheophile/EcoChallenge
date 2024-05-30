@@ -1,6 +1,6 @@
 import importlib
 import time
-import memory_profiler
+from memory_profiler import memory_usage
 import click
 import psutil
 import json
@@ -10,16 +10,11 @@ import manual_builtin
 
 from config import builtin_args
 
+
 def measure_performance(func, **args):
-    start_time = time.time()
-    start_mem = memory_profiler.memory_usage()[0]
-    start_cpu = psutil.cpu_percent(interval=None)
+    mem_usage = memory_usage((func, args.values()), interval=.001)
 
-    end_time = time.time()
-    end_mem = memory_profiler.memory_usage()[0]
-    end_cpu = psutil.cpu_percent(interval=None)
-
-    return end_time - start_time, end_mem - start_mem, end_cpu - start_cpu
+    return mem_usage
 
 
 @click.command()
@@ -42,19 +37,14 @@ def main(builtin_name: str, n: int):
         }
     }
 
-    for i in range(n):
-        time_original, ram_original, cpu_original = measure_performance(original_builtin, **builtin_args[builtin_name])
-        time_test, ram_test, cpu_test = measure_performance(test_builtin, **builtin_args[builtin_name])
+    test_res = measure_performance(test_builtin, **builtin_args[builtin_name])
+    #results['Test']['RAM'].append(res)
 
-        results['Original']['RAM'].append(ram_original)
-        results['Test']['RAM'].append(ram_test)
-        results['Original']['CPU'].append(cpu_original)
-        results['Test']['CPU'].append(cpu_test)
-        results['Original']['time'].append(time_original)
-        results['Test']['time'].append(time_test)
+    origin_res = measure_performance(original_builtin, **builtin_args[builtin_name])
+    #results['Original']['RAM'].append(res)
 
-    with open('report.json', 'w') as file:
-        json.dump(results, file)
+    print(f'Original: {origin_res}\n'
+          f'Test: {test_res}')
 
 
 if __name__ == '__main__':
