@@ -4,7 +4,7 @@ def main(size):
     n = 100
     for _ in range(n):
         iterable = range(size)
-        (iterable)
+        len(iterable)
 
 if __name__ == "__main__":
     parser = ArgumentParser()
