@@ -12,7 +12,9 @@ def hex(x):
     return "0x" + result if result else "0x0"
 
 def main(x: int):
-    hex(x)
+    n = 1000
+    for _ in range(n):
+        hex(x)
 
 if __name__ == "__main__":
     parser = ArgumentParser()

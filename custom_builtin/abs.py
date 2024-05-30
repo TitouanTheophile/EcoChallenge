@@ -7,7 +7,9 @@ def abs(x):
         return -x
 
 def main(x: int):
-    abs(x)
+    n = 1000
+    for _ in range(n):
+        abs(x)
 
 if __name__ == "__main__":
     parser = ArgumentParser()
