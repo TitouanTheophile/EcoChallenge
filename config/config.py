@@ -29,7 +29,55 @@ conf = {
         (500,),
         (5000,),
     ],
+    "map_build_list": [
+        # Takes size of the list that will be generated with range
+        (1,),
+        (20,),
+        (100,),
+        (500,),
+        (5000,),
+    ],
+    "map_list_comp": [
+        # Takes size of the list that will be generated with range
+        (1,),
+        (20,),
+        (100,),
+        (500,),
+        (5000,),
+    ],
+    "map_genexp": [
+        # Takes size of the list that will be generated with range
+        (1,),
+        (20,),
+        (100,),
+        (500,),
+        (5000,),
+    ],
     "filter": [
+        # Takes size of the list that will be generated with range
+        (1,),
+        (20,),
+        (100,),
+        (500,),
+        (5000,),
+    ],
+    "filter_build_list": [
+        # Takes size of the list that will be generated with range
+        (1,),
+        (20,),
+        (100,),
+        (500,),
+        (5000,),
+    ],
+    "filter_list_comp": [
+        # Takes size of the list that will be generated with range
+        (1,),
+        (20,),
+        (100,),
+        (500,),
+        (5000,),
+    ],
+    "filter_genexp": [
         # Takes size of the list that will be generated with range
         (1,),
         (20,),
