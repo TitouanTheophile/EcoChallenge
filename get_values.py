@@ -3,8 +3,8 @@ import vjoule_handler
 import pandas as pd
 
 builtin_list = [
-    'sum'
-    'hex',
+    'sum',
+#    'hex',
     'abs',
     'len',
 #   'divmod',
