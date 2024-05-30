@@ -46,11 +46,11 @@ def main():
 
             for i in range(5):
                 custom_joule_results = vjoule_handler.eval_python(
-                    filepath=custom_builtin_path,
+                    custom_builtin_path,
                     *scenario
                 )
                 original_joule_results = vjoule_handler.eval_python(
-                    filepath=original_builtin_path,
+                    original_builtin_path,
                     *scenario
                 )
 
