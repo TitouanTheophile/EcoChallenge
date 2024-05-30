@@ -1,13 +1,8 @@
 import builtins
 from argparse import ArgumentParser
 
-
 def main(x: int):
-    # To uncomment when in prod
-    # builtins.abs(x)
-
-    # For testing
-    print(builtins.abs(x))
+    builtins.abs(x)
 
 if __name__ == "__main__":
     parser = ArgumentParser()

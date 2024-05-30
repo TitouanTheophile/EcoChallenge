@@ -1,15 +1,16 @@
+from argparse import ArgumentParser
+
 def abs(x):
     if x > 0:
         return x
     else:
         return -x
 
-def main():
-    # To uncomment when in prod
-    # abs(x)
-    
-    # print(abs(x))
-    pass 
+def main(x: int):
+    abs(x)
 
 if __name__ == "__main__":
-    main()
+    parser = ArgumentParser()
+    parser.add_argument("x", type=int)
+    args = parser.parse_args()
+    main(args.x)
