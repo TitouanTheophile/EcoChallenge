@@ -10,13 +10,13 @@ builtin_list = [
 #   'divmod',
     'enumerate',
     'map',
-#    'map_build_list',
-#    'map_genexp',
-#    'map_list_comp',
-     'filter',
-#    'filter_build_list',
-#    'filter_genexp',
-#    'filter_list_comp',
+    'map_build_list',
+    'map_genexp',
+    'map_list_comp',
+    'filter',
+    'filter_build_list',
+    'filter_genexp',
+    'filter_list_comp',
 ]
 
 
