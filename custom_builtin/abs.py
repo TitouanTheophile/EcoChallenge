@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
 
-def abs(x):
+def _abs(x):
     if x > 0:
         return x
     else:
@@ -9,7 +9,7 @@ def abs(x):
 def main(x: int):
     n = 1000
     for _ in range(n):
-        abs(x)
+        _abs(x)
 
 if __name__ == "__main__":
     parser = ArgumentParser()
