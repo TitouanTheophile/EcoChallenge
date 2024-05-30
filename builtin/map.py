@@ -1,7 +1,9 @@
 from argparse import ArgumentParser
 
+
 def triple(item):
     return item * 3
+
 
 def main(size):
     n = 100
@@ -9,6 +11,7 @@ def main(size):
         iterable = range(size)
         for _ in map(triple, iterable):
             pass
+
 
 if __name__ == "__main__":
     parser = ArgumentParser()
