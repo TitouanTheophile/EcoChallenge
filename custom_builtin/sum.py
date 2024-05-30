@@ -1,10 +1,17 @@
 from argparse import ArgumentParser
 
+def _sum(iterable):
+    s = 0
+    for v in iterable:
+        s = s + v
+
+    return s
+
 def main(size):
     n = 100
     for _ in range(n):
         iterable = range(size)
-        sum(iterable)
+        _sum(iterable)
 
 if __name__ == "__main__":
     parser = ArgumentParser()

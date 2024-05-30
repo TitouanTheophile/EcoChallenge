@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
 
-def hex(x):
+def _hex(x):
     if not isinstance(x, int):
         raise TypeError("an integer is required")
     hex_digits = "0123456789abcdef"
@@ -14,7 +14,7 @@ def hex(x):
 def main(x: int):
     n = 1000
     for _ in range(n):
-        hex(x)
+        _hex(x)
 
 if __name__ == "__main__":
     parser = ArgumentParser()
