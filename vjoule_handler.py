@@ -27,7 +27,7 @@ def eval_command(cmd: str, *args) -> dict:
 
 def eval_python(filepath: str, *args) -> dict:
     args_as_str = " ".join([str(a) for a  in args])
-    eval_command(f"{python_cmd} {filepath} {args_as_str}")
+    return eval_command(f"{python_cmd} {filepath} {args_as_str}")
 
 
 def main() -> int:
