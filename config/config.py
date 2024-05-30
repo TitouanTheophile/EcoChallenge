@@ -1,6 +1,6 @@
 conf = {
     "abs": {
-        "scenarios": [
+        "scenario_args": [
             (1,),
             (-1,),
             (10,),
@@ -9,23 +9,50 @@ conf = {
         ]
     },
     "sum": {
-        "scenarios": [
+        # Takes size of the list that will be generated with range
+        "scenario_args": [
+            (1,),
+            (20,),
+            (100,),
+            (500,),
+            (5000,),
         ]
     },
     "hex": {
-        "scenarios": [
+        "scenario_args": [
+            (1,),
+            (-1,),
+            (10,),
+            (-10,),
+            (-9_223_372_036_854_775_808,),
         ]
     },
     "map": {
-        "scenarios": [
+        # Takes size of the list that will be generated with range
+        "scenario_args": [
+            (1,),
+            (20,),
+            (100,),
+            (500,),
+            (5000,),
         ]
     },
     "filter": {
-        "scenarios": [
+        "scenario_args": [
+            (1,),
+            (20,),
+            (100,),
+            (500,),
+            (5000,),
         ]
     },
     "zip": {
-        "scenarios": [
+        "scenario_args": [
+            (1, 1),
+            (20, 20),
+            (100, 100),
+            (500, 300),
+            (300, 150),
         ]
     },
 }
