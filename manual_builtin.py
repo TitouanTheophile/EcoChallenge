@@ -104,8 +104,22 @@ def exec(object, globals=None, locals=None, /, *, closure=None):
     pass
 
 def filter(function, iterable):
-    # return filter()
-    pass
+    for element in iterable:
+        if function(element):
+            yield element
+
+def filter_build_list(function, iterable):
+    output = []
+    for element in iterable:
+        if function(element):
+            output.append(element)
+    return output
+
+def test_filter(size):
+    def predicate(x):
+        return x % 3 == 0
+    for _ in filter(predicate, range(size)):
+        pass
 
 def float(x=0.0):
     # return float()
@@ -189,9 +203,21 @@ def locals():
     # return locals()
     pass
 
-def map(function, iterable, *iterables):
-    # return map()
-    pass
+def map(function, iterable):
+    for element in iterable:
+        yield function(element)
+
+def map_build_list(function, iterable):
+    output = []
+    for element in iterable:
+        output.append(function(iterable))
+    return output
+
+def test_map(size):
+    def triple(element):
+        return element * 3
+    for _ in map(triple, range(size)):
+        pass
 
 def max(iterable, *, key=None):
     # return max()
@@ -246,8 +272,9 @@ def property(fget=None, fset=None, fdel=None, doc=None):
     pass
 
 def range(stop):
-    # return range()
-    pass
+    i = 0
+    while i < stop:
+        yield i
 
 def repr(object):
     # return repr()
@@ -285,9 +312,9 @@ def str(object=''):
     # return str()
     pass
 
-def sum(iterable, start=0):
+def sum(iterable):
     s = 0
-    for _, v in builtins.enumerate(iterable, start):
+    for v in iterable:
         s = s + v
     
     return s
@@ -309,8 +336,14 @@ def vars():
     pass
 
 def zip(*iterables, strict=False):
-    # return zip()
-    pass
+    try:
+        while True:
+            next_tuple = []
+            for iterable in iterables:
+                next_tuple.append(next(iterable))
+            yield next_tuple
+    except StopIteration:
+        pass
 
 # def import():
     # return import()  pass
