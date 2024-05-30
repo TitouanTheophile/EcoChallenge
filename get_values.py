@@ -37,6 +37,8 @@ def main():
 
         builtin_scenarios = config[builtin]
 
-        builtin_custom_path = f'custom/{builtin}.py'
+        custom_builtin_path = f'custom/{builtin}.py'
+        original_builtin_path = f'custom/{builtin}.py'
+
 
 
