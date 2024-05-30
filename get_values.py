@@ -4,16 +4,16 @@ import pandas as pd
 
 builtin_list = [
     'sum'
-#    'hex',
-#    'abs',
-#    'len',
-#    'divmod',
-#    'enumerate',
-#    'map',
+    'hex',
+    'abs',
+    'len',
+#   'divmod',
+    'enumerate',
+    'map',
 #    'map_build_list',
 #    'map_genexp',
 #    'map_list_comp',
-#    'filter',
+     'filter',
 #    'filter_build_list',
 #    'filter_genexp',
 #    'filter_list_comp',
