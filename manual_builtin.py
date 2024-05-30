@@ -285,9 +285,9 @@ def str(object=''):
     # return str()
     pass
 
-def sum(iterable, start=0):
+def sum(iterable):
     s = 0
-    for _, v in builtins.enumerate(iterable, start):
+    for v in iterable:
         s = s + v
     
     return s
