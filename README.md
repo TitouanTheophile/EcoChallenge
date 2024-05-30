@@ -20,4 +20,5 @@ For each potential rule, the rule validator will take as inputs :
 Pre-requisites : you must have a machine with python3 + vjoule installed
 
 How to generate result files : ```python rule_validator.py```
+
 How to render a result files : ```python graph_generator.py <function_name>.csv```
