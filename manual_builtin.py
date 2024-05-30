@@ -341,7 +341,7 @@ def zip(*iterables, strict=False):
             next_tuple = []
             for iterable in iterables:
                 next_tuple.append(next(iterable))
-            yield next_tuple
+            yield tuple(next_tuple)
     except StopIteration:
         pass
 
