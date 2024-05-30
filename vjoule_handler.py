@@ -1,6 +1,7 @@
 import os
 import sys
 import re
+import time
 
 vjoule_cmd = os.environ.get("VJOULE_CMD", "vjoule")
 python_cmd = os.environ.get("PYTHON_CMD", "python3")
@@ -17,7 +18,10 @@ def parse_results(input: str) -> dict:
 
 def eval_command(cmd: str, *args) -> dict:
     args_as_str = " ".join(args)
-    stream = os.popen(f"{vjoule_cmd} {cmd} {args_as_str}")
+    command = f"{vjoule_cmd} {cmd} {args_as_str}"
+    print("### - " + str(time.time()) + " - Start of command - " + command )
+    stream = os.popen(command)
+    print("### - " + str(time.time()) + " - End of command - " + command)
     return parse_results(stream.read())
 
 
