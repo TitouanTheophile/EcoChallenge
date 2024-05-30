@@ -1,8 +1,9 @@
-import builtins
 from argparse import ArgumentParser
 
 def main(x: int):
-    builtins.hex(x)
+    n = 1000
+    for _ in range(n):
+        hex(x)
 
 if __name__ == "__main__":
     parser = ArgumentParser()
