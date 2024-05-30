@@ -3,7 +3,7 @@ import sys
 import re
 
 vjoule_cmd = os.environ.get("VJOULE_CMD", "vjoule")
-python_cmd = os.environ.get("PYTHON_CMD", "python")
+python_cmd = os.environ.get("PYTHON_CMD", "python3")
 
 
 def parse_results(input: str) -> dict:
