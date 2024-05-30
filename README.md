@@ -11,4 +11,6 @@ For each potential rule, the rule validator will take as inputs :
 
   For each scenario, the rule validator will instrumente it with monitoring tools (actually only one - vjoule) and will generate some results file.
 
+  You can find some generated sample files in the folder **/samples**. 
+
   Based on those results file, a graphic summary is generated for each rule.
