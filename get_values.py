@@ -34,8 +34,8 @@ def main():
         builtin_scenarios = config[builtin]
 
         for scenario in builtin_scenarios:
-            custom_builtin_path = f'custom/{builtin}.py'
-            original_builtin_path = f'custom/{builtin}.py'
+            custom_builtin_path = f'custom_builtin/{builtin}.py'
+            original_builtin_path = f'builtin/{builtin}.py'
 
             # cpu_original = []
             # cpu_custom = []
