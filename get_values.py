@@ -83,8 +83,7 @@ def main():
 
             results_path = f'output/{builtin}.csv'
 
-            df = pd.DataFrame(
-                results, index=[f'scenario_{i}' for i in range(1, 6)])
+            df = pd.DataFrame(results)
             df.to_csv(results_path, index=True)
 
 
