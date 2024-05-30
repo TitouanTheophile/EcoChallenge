@@ -4,7 +4,7 @@ import pandas as pd
 
 builtin_list = [
     'sum',
-    'hex',
+#    'hex',
     'abs',
     'len',
 #   'divmod',
