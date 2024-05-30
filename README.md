@@ -14,3 +14,10 @@ For each potential rule, the rule validator will take as inputs :
   You can find some generated sample files in the folder **/samples**. 
 
   Based on those results file, a graphic summary is generated for each rule.
+
+## How to
+
+Pre-requisites : you must have a machine with python3 + vjoule installed
+
+How to generate result files : ```python rule_validator.py```
+How to render a result files : ```python graph_generator.py <function_name>.csv```
