@@ -2,19 +2,19 @@ from config.config import conf as config
 import vjoule_handler
 import pandas as pd
 
-#builtin_list = ['sum', 'hex', 'abs', 'len', 'divmod', 'enumerate', 'maps', 'filter', 'zip']
-builtin_list = ['hex']
+builtin_list = ['sum', 'hex', 'abs', 'len', 'divmod', 'enumerate', 'map', 'map_build_list', 'filter',
+                'filter_build_list']
 
 
 def main():
     for builtin in builtin_list:
         results = {
-            "cpu_original": [],
-            "cpu_custom": [],
-            "ram_original": [],
-            "ram_custom": [],
-            "total_original": [],
-            "total_custom": [],
+            #"cpu_original": [],
+            #"cpu_custom": [],
+            #"ram_original": [],
+            #"ram_custom": [],
+            "joule_builtin": [],
+            "joule_custom": [],
         }
 
         builtin_scenarios = config[builtin]
@@ -23,12 +23,12 @@ def main():
             custom_builtin_path = f'custom/{builtin}.py'
             original_builtin_path = f'custom/{builtin}.py'
 
-            cpu_original = []
-            cpu_custom = []
-            ram_original = []
-            ram_custom = []
-            total_original = []
-            total_custom = []
+            #cpu_original = []
+            #cpu_custom = []
+            #ram_original = []
+            #ram_custom = []
+            scenario_joule_builtin = []
+            scenario_joule_custom = []
 
             for i in range(5):
                 custom_joule_results = vjoule_handler.eval_python(
@@ -39,24 +39,38 @@ def main():
                     filepath=original_builtin_path,
                     *scenario
                 )
-                cpu_original.append(original_joule_results['CPU'])
-                cpu_custom.append(original_joule_results['CPU'])
-                ram_original.append(original_joule_results['RAM'])
-                ram_custom.append(original_joule_results['RAM'])
-                total_original.append(original_joule_results['total'])
-                total_custom.append(original_joule_results['total'])
 
-            results['cpu_original'].append(cpu_original)
-            results['cpu_custom'].append(cpu_custom)
-            results['ram_original'].append(ram_original)
-            results['ram_custom'].append(ram_custom)
-            results['total_original'].append(total_original)
-            results['total_custom'].append(total_custom)
+                '''#FOR TESTS
+                custom_joule_results = {
+                    'CPU': 20,
+                    'RAM': 22,
+                    'total': 23,
+                }
+
+                original_joule_results = {
+                    'CPU': 19,
+                    'RAM': 18,
+                    'total': 15,
+                }'''
+
+                #cpu_original.append(original_joule_results['CPU'])
+                #cpu_custom.append(custom_joule_results['CPU'])
+                #ram_original.append(original_joule_results['RAM'])
+                #ram_custom.append(custom_joule_results['RAM'])
+                scenario_joule_builtin.append(original_joule_results['total'])
+                scenario_joule_custom.append(custom_joule_results['total'])
+
+            #results['cpu_original'].append(cpu_original)
+            #results['cpu_custom'].append(cpu_custom)
+            #results['ram_original'].append(ram_original)
+            #results['ram_custom'].append(ram_custom)
+            results['joule_builtin'].append(scenario_joule_builtin)
+            results['joule_custom'].append(scenario_joule_custom)
 
             results_path = f'output/{builtin}.csv'
 
             df = pd.DataFrame(results, index=[f'scenario_{i}' for i in range(1, 6)])
-            df.to_csv(results_path, index=False)
+            df.to_csv(results_path, index=True)
 
 
 if __name__ == '__main__':
